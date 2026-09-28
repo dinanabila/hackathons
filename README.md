@@ -2,7 +2,45 @@
 
 ## Hackathon Overview
 
-Raw data: 
+### Versi DQLab (Penyelenggara Hackathon)
+
+*source: https://academy.dqlab.id/challenge/detail/536*
+
+**Excel Hackathon: Build Inventory Analytics & Planning with Excel**
+ 
+> "Berapa banyak barang yang harus kita pesan hari ini?"
+
+Ini adalah pertanyaan sederhana yang bisa menentukan apakah bisnis kehabisan stok atau kehilangan modal di gudang.
+
+Dalam Excel Hackathon 2026, peserta akan berperan sebagai Inventory Planning Analyst dan membangun Decision Support System menggunakan Microsoft Excel untuk membantu perusahaan mengambil keputusan inventory secara tepat. 
+
+Peserta akan bekerja dengan ribuan data transaksi dan mengubah data tersebut menjadi insight yang dapat digunakan untuk menentukan keputusan pembelian. Berikut tugasnya:
+
+- Process - Mengolah puluhan ribu transaksi secara otomatis dan terstruktur.
+- Analyze - Mengidentifikasi kondisi inventory berdasarkan berbagai metrik yang relevan.
+- Recommend - Menentukan produk yang perlu direkomendasikan untuk reorder maupun produk yang sebaiknya dihentikan pemesanannya.
+- Support Decisions - Menghasilkan informasi yang dapat menjadi dasar pengambilan keputusan pembelian.
+
+
+### Versi Pemahamanku
+*untuk penjelasannya sendiri kutulis pakai kata-kata sendiri, supaya memorable kalau dibaca lagi di masa depan. kutulis setelah selesai mengerjakan hackathon secara menyeluruh.*
+
+**Big Picture:** 
+- **Pertanyaan utama** yang mau dijawab itu, berapa banyak barang yang perlu dioder lagi dan kapan tepatnya supaya ga kekurangan tapinya juga ga sampai bikin gudang kepenuhan yang ga bisa ditutup lagi pintunya.
+- Supaya stok produknya **aman untuk sepanjang tahun 2026** ini, di sini peserta diminta untuk menghasilkan prediksi kapan dan berapa tepatnya masing-masing produk perlu diorder kembali.
+- Untuk bisa memprediksi angka + tanggalnya, kita butuh data, yang mana **data mentah**nya sudah disediakan penyelenggara hackathon sbb:
+    - Tanggal di mana terjadi permintaan (demand) produk beserta jumlah permintaannya selama Januari 2026. Produknya sendiri terdiri dari beberapa jenis, di sini istilahnya SKU untuk penyebutannya. SKU PROD A, SKU PROD B, sampai SKU PROD E. Data jumlah permintaan tercatat untuk masing-masing SKU nya. 
+    - Kapasitas maksimal gudang untuk masing-masing SKU.
+    - Initial stock masing-masing SKU yang tersedia di gudang.
+- Ingat apa salah satu **syarat**nya? -> jangan sampai gudang kepenuhan, jangan sampai juga stok kosong / kekurangan dari jumlah permintaan. 
+- Jumlah permintaan bisa jadi penentu kuat yang dapat dijadikan bahan prediksi. Kalau kita tahu jumlah permintaan yang kemungkinan terjadi beserta tanggalnya, kita jadi bisa prepare dong berapa tepatnya barang yang perlu di-reorder atau di-restock. Maka dari itu, kita buatlah **proyeksi jumlah permintaan sampai setahun ke depan** sampai akhir tahun, supaya data perkiraan jumlah permintaannya lengkap dan memadai untuk basis penentuan jumlah + tanggal reorder nya. 
+- Gimana caranya? Caranya dengan memanfaatkan data mentah jumlah permintaan di bulan Januari yang sudah tercatat sebelumnya, lalu, gunakan rule proyeksi yang sudah ditentukan penyelenggara hackathon untuk melakukan proyeksi sampai akhir tahun (Desember 2026). 
+- Janlup kita juga punya data **initial stock** di gudang per tanggal 1 Januari. Data itu juga perlu dijadikan tonggak awal perhitungan stok. Kek misal, di suatu titik data di tanggal tertentu, stok yang tadinya sejumlah initial stock jadi berkurang lantaran terdapat jumlah permintaan sebanyak sekian di tanggal ybs.
+- Lalu sekarang kita punya angka proyeksi jumlah permintaan selama setahun ke depan, sekarang apa? Gimana kita bisa pakai itu untuk menentukan jumlah reordering beserta tanggal persisnya? 
+- Caranya dengan memperhatikan aspek lead time (sejenis waktu tunggu barang hingga sampai ke gudang terhitung sejak tanggal pemesanan), serta kapasitas gudang itu sendiri. Untuk detailnya lihat di bagian selanjutnya, Raw Data & Tasks, sbb:
+
+
+## Raw Data & Tasks 
 
 - **sheet `Demand Projection`:** <br> <br> <img src="img/demand_projection_sheet.png" alt="Demand Projection sheet" width="400"> <br><br>
 Keterangan:
@@ -44,9 +82,24 @@ Keterangan:
     
     <br>
 
-## Thoughts
+## Solution
+
+*Well, generally . . .*
+
+- Solusi inti dari hackathon ini pada dasarnya adalah kemampuan diri dalam memahami permainan kata.
+- Tidak ada analisis data tingkat tinggi yang diperlukan untuk menyelesaikan seluruh task nya. Tugasnya hanya sekedar memahami instruksi, lalu eksekusi sesuai instruksi, dengan tetap memastikan bahwa tidak ada perbedaan pemahaman antara pemberi instruksi dengan penerima instruksi.
+- Jika pemahaman antara pemberi dan penerima instruksi sudah dipastikan sama, sisanya tinggal serahkan pekerjaan 'administratif' ke AI. Lalu pastikan, apakah formula yang dihasilkan sudah sesuai dengan yang diekspektasikan atau belum.
+- Jikapun masih belum terlalu sering pakai excel dan masih rada kagok dengan function bawaannya, tinggal baca saja penjelasannya di Help yang sudah disediakan Microsoft Excel 365. Atau, kalau butuh gaya ngobrol, ya balik ke AI lagi minta jelasin pakai bahasa yang mudah dimengerti bocil 0 tahun.
+- Tapi penjelasan di Help itu saja pun sudah cukup. Penjelasannya mudah dicerna, ada contoh case nya juga. Jadi, untuk perkara kagok function bukan masalah besar. Lagian kalau udah sering dipakai dan udah sering ketemu, lama-lama function-function itu dengan sendirinya terekam juga di luar kepala.
+- Untuk solusi akhir dapat dilihat di attempt terakhir sebagai berikut: https://github.com/dinanabila/hackathon-excel-dqlab-2026/tree/main/07
+
+
+## Mischellaneous
 
 ### Pre Thoughts
+
+*Pre thoughts sebelum mulai ikut hackathon ini:*
+
 Tujuan ikutan hackathon ini:
 - Mencicip dunia supply chain, inventory stock. 
 - Me-refresh skill excel. 
@@ -59,16 +112,15 @@ Plan alur berpikir buat nyelesaiin hackathon ini:
 - Aplikasikan rumus excel hasil rundingan dengan AI. 
 - Submit.
 
-
 My subjective random thoughts during hackathon:
 - Mengingat rule yang membebaskan peserta untuk menggunakan AI, maka melihat leaderboard jadi kurang apple-to-apple dijadikan tolok ukur untuk membandingkan progres diri buatku. Terlebih saat ini aku lebih memprioritaskan pematangan konsep secara keseluruhan terlebih dahulu, baru kemudian mengejar kecepatan pengerjaan.
 - Yang oleh karenanya, leaderboard di hackathon kali ini sejatinya kebanyakannya lebih berfungsi sebagai pembanding seberapa bagus prompt dan seberapa cepat AI yang digunakan peserta. Saat ini aku belum dalam kondisi seperti itu, masih dalam fase memahami dan memaknai.
 - Jadi di hackathon ini, fokusnya lebih ke mindset kalau di sini aku berkompetisi terhadap diriku sendiri, dengan caraku sendiri, dengan pace ku sendiri. 
 
 
-### After Thoughts
+### Mid Thoughts
 
-*thought after 6th attempt*:
+*thought after doing 6th attempt during hackathon*:
 
 Sooo in the end, the fastest solution in the end is training agent, then?
 
@@ -81,3 +133,15 @@ Berusaha memahami di tengah derasnya arus kecepatan itu, sebenarnya sulit, dan m
 Tapi, meski begitu, aku tetap ingin memahami, aku tetap ingin mengerti, 
 
 dan aku tetap akan berproses. 
+
+### After Thoughts
+
+*thought after doing this hackathon case mindfully:* 
+
+Menarik siii, case ini. Jadi tau, apasi basis yang diperlukan sebagai penentu kapan dan berapa tepatnya barang yang kita jual harus direorder / direstock kembali tanpa harus menuhin gudang dan tanpa harus kena masalah 'yah mohon maaf stoknya lagi kosong kak'. 
+
+Untuk analisis data, menurutku itu ga disediakan di hackathon ini. Karenaaa, rule nya sendiri udah ditentukan tanpa harus bikin peserta mikir lagi (lihat lagi rule perhitungan kapasitas gudang, sama, rule proyeksi demand yang amat sangat detail itu kwwkw). 
+
+Padahal, justru di situ seninya, di penentuan angka di setiap rule nya. Mungkin kalau di lapangannya rule kayak gitu sebenarnya hasil kerjaan anak-anak data science. 
+
+Mungkin.
