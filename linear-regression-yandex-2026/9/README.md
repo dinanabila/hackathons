@@ -1,0 +1,1 @@
+ini benerin yang 7th attempt, jadi tanpa train test split wkwk. hasil ningkat dikit karena data trainnya lebih banyak.
